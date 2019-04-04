@@ -8,28 +8,11 @@ namespace API.Models
 {
     public class ElectricityContract : Contract
     {
-        private BuildingType buildingType;
-
         public ElectricityContract(int id, string name, double price, BuildingType buildingType) : base(id, name, price)
         {
-            this.BuildingType = buildingType;
+            this.BuildingType = buildingType.ToString();
         }
 
-        public BuildingType BuildingType
-        {
-            get => buildingType;
-
-            set
-            {
-                try
-                {
-                    buildingType = value;
-                }
-                catch(ArgumentException e)
-                {
-                    throw new ArgumentException("Your building type does not exist.", e);
-                }
-            }
-        }
+        public string BuildingType { get; set; }
     }
 }

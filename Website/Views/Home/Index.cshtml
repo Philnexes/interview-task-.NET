@@ -2,13 +2,49 @@
     ViewBag.Title = "Tieto application by FDP";
 }
 
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
 <div class="row">
-    <div id="responsive-column-1" class="col-sm-12 col-md-6">
-        Responsive column 1
+    <div id="heat-contract" class="col-sm-11 col-md-5 p-3 m-2 border">
+        Name: <span id="name-1"></span><br />
+        Price: <span id="price-1"></span> eur<br />
+        Temperature set: <span id="temperature-set"></span>
     </div>
 
-    <div id="responsive-column-2" class="col-sm-12 col-md-6">
-        Responsive column 2
+    <div id="electricity-contract" class="col-sm-11 col-md-5 p-3 m-2 border">
+        Name: <span id="name-2"></span><br />
+        Price: <span id="price-2"></span> EUR<br />
+        House type: <span id="house-type"></span>
     </div>
-
 </div>
+
+<script type="text/javascript">
+    var url = "http://localhost:50213/api/";
+    var contractId = 2;
+
+    $.ajax({
+        type: 'GET',
+        url: url + 'HeatContract/' + contractId,
+        datatype: 'json',
+        success: function (result) {
+            var TempSet = '';
+
+            $("#name-1").append(result.Name);
+            $("#price-1").append(result.Price);
+
+            result.TemperatureSet.forEach(function (item) { TempSet += item + ' °C, '; });
+            $("#temperature-set").append(TempSet.slice(0, TempSet.lastIndexOf(',')));
+        }
+    })
+
+    $.ajax({
+        type: 'GET',
+        url: url + 'ElectricityContract/' + contractId,
+        datatype: 'json',
+        success: function (result) {
+            $("#name-2").append(result.Name);
+            $("#price-2").append(result.Price);
+            $("#house-type").append(result.BuildingType);
+        }
+    })
+</script>
