@@ -10,7 +10,7 @@ namespace API.Models
     {
         private BuildingType buildingType;
 
-        public ElectricityContract(string name, double price, BuildingType buildingType) : base(name, price)
+        public ElectricityContract(int id, string name, double price, BuildingType buildingType) : base(id, name, price)
         {
             this.BuildingType = buildingType;
         }
@@ -30,11 +30,6 @@ namespace API.Models
                     throw new ArgumentException("Your building type does not exist.", e);
                 }
             }
-        }
-
-        public override Contract GetContract()
-        {
-            throw new NotImplementedException();
         }
     }
 }

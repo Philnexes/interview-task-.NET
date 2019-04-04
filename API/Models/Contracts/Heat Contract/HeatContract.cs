@@ -9,14 +9,9 @@ namespace API.Models
     {
         public List<double> TemperatureSet;
 
-        public HeatContract(string name, double price, List<double> temperatureSet) : base(name, price)
+        public HeatContract(int id, string name, double price, List<double> temperatureSet) : base(id, name, price)
         {
-            TemperatureSet = temperatureSet;
-        }
-
-        public override Contract GetContract()
-        {
-            throw new NotImplementedException();
+            this.TemperatureSet.AddRange(temperatureSet);
         }
     }
 }
