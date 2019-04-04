@@ -11,6 +11,7 @@ namespace API.Models
 
         public HeatContract(int id, string name, double price, List<double> temperatureSet) : base(id, name, price)
         {
+            TemperatureSet = new List<double>();
             this.TemperatureSet.AddRange(temperatureSet);
         }
     }
