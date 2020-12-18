@@ -1,4 +1,4 @@
-# tieto-application-API
+# interview-task-.NET
 
 This web application serves as a code demonstration for the job interview in Tieto.
 
@@ -20,6 +20,7 @@ Part 2
 
 
 
+# My solution
 API includes classes that implement these Contracts (Models), which are then controlled in Contract controllers (Controllers).
 I implemented the 2 methods to get both of the contracts in these seperate controllers, but there are also methods for getting the
 whole enumerable list of all created objects, for testing purposes.
